@@ -1,0 +1,4 @@
+HAL_LED.c:13:6:LED_void_init	16	static
+HAL_LED.c:41:6:LED_void_on	16	static
+HAL_LED.c:46:6:LED_void_off	16	static
+HAL_LED.c:53:6:LED_void_toggle	24	static

@@ -1,0 +1,2 @@
+HAL_sevenSegment.c:15:6:seven_seg_void_init	16	static
+HAL_sevenSegment.c:57:6:seven_seg_void_dispaly	16	static
