@@ -1,0 +1,27 @@
+#include <stdint.h>
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "RCC_interface.h"
+#include "HAL_sevenSegment.h"
+#include "DIO_interface.h"
+
+
+int main(void)
+{
+	RCC_voidInitSysClock();
+	RCC_voidEnableClock(RCC_APB2, 2); // Enable clock for GPIOA (A:2 B:3 C:4)
+	RCC_voidEnableClock(RCC_APB2, 3); // Enable clock for GPIOD
+	RCC_voidEnableClock(RCC_APB2, 4); // Enable clock for GPIOC
+	seven_seg_void_init(GPIOA, ANODE);  // init seven segment
+	seven_seg_void_dispaly(GPIOA, 2 );
+  int k=0;
+	while(1){
+
+        for(u8 count =0 ; count<10U; count++){
+
+        	seven_seg_void_dispaly(GPIOA, count );
+        	for(int i=0; i<100000; i++){k++;}
+        }
+
+	}
+}
