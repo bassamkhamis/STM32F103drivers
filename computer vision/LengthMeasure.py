@@ -12,6 +12,7 @@ obj = []
 LengthNew = 0
 LengthOld = 0
 deltaLength = 0
+flag = 0
 ###############
 while 1:
     # uncomment the below line for video
@@ -60,16 +61,24 @@ while 1:
     cv2.line(frame, (obj[0][0], obj[0][1]), (obj[1][0], obj[1][1] + obj[1][3]), (0, 255, 0), 2)
     # compute the length
     LengthNew = round((obj[0][1]-obj[1][1] + obj[0][2])/obj[0][2], 2)
+    # the original length is fixed (not change)
+    # block of this if will execute  only one
+    if (flag == 0):
+        originalLength = LengthNew
+        flag = 1
+
+    stringOriginalLength = "original Length = " + str(originalLength) + "cm"
+    cv2.putText(frame, stringOriginalLength, (obj[0][0] + 40, (obj[0][1] + obj[1][1]) // 2 + -35), cv2.FONT_ITALIC, 1,(0, 0, 150), 2)
     # display length on The frame
-    stringLength =  "Length = " + str(LengthNew) + "cm"
-    cv2.putText(frame, stringLength, (obj[0][0]+80, (obj[0][1]+obj[1][1])//2 + 5), cv2.FONT_ITALIC, 1, (0, 0, 150), 2)
+    stringLength =  "Current Length = " + str(LengthNew) + "cm"
+    cv2.putText(frame, stringLength, (obj[0][0]+40, (obj[0][1]+obj[1][1])//2 + 5), cv2.FONT_ITALIC, 1, (0, 0, 150), 2)
     # compute the Delta
-    deltaLength = abs(round(LengthNew - LengthOld,2))
+    deltaLength = abs(round(originalLength - LengthOld,2))
     LengthOld = LengthNew
     print("delta Length = ", deltaLength)
     # display Delta length on The frame
     stringDeltaLength = "Delta = " + str(deltaLength) + "cm"
-    cv2.putText(frame, stringDeltaLength, (obj[0][0] + 100, ((obj[0][1] + obj[1][1]) // 2) + 40), cv2.FONT_ITALIC, 1, (0, 0, 150), 2)
+    cv2.putText(frame, stringDeltaLength, (obj[0][0] + 40, ((obj[0][1] + obj[1][1]) // 2) + 40), cv2.FONT_ITALIC, 1, (0, 0, 150), 2)
     # emptying the current frame
     obj = []
     cv2.imshow('Original', frame)  # to display the original frame
