@@ -27,12 +27,13 @@ int main(void)
 
 	volatile int x;
     float data[2] = {1,2};
+	char  ch =65;
 	while(1)
 	{
-		MUSART1_voidTransmit((u8 *)data,DUMP);
-		for(x=0; x<100000; x++);
-
-		
+		MUSART1_voidTransmit( &ch,1);
+		MGPIO_VidSetPinValue(GPIOA,PIN0,HIGH);
+		for(x=0; x<1001; x++);
+		MGPIO_VidSetPinValue(GPIOA,PIN0,LOW);
 		
 		
 /* 		x = MUSART1_u8Receive();
