@@ -1,4 +1,4 @@
-# Universla Test Machine(UTM) Final Geaduation project 
+# Universal Test Machine(UTM) Final Geaduation project 
 ### We are seniors student at Alexandria University faculty of Engineering Electrical department
 Our final project is to Reversing Engineering And convert a old machine in our college to automatic Machine
 
