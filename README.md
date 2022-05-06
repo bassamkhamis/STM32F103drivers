@@ -6,6 +6,7 @@ Our final project is to Reversing Engineering And convertc a old machine in our 
 ## Our work divided into 3 Part:
 * 1- Reverse Engineering 
 ![50%](https://progress-bar.dev/50)
+![100%](https://progress-bar.dev/100?title=completed)
 * 2- Modeling
 * 3- Improve control
 
