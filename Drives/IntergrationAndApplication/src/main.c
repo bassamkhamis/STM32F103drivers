@@ -150,7 +150,8 @@ int main(int argc, char* argv[])
 	MGPIO_VidSetPinDirection(GPIOA,PIN10,INPUT_FLOATING);
 	STEPPER_void_init(GPIOB,PIN14,GPIOB,PIN15);
 	switches(); //Init swithes
-
+while(1)
+{
 	if (MGPIO_u8GetPinValue(GPIOA,START_M) && breakpoint==0){
 
 		adjustmotor();
@@ -175,7 +176,7 @@ int main(int argc, char* argv[])
 
 	}
 
-
+}
 
 }
 
