@@ -80,12 +80,12 @@ void adjustmotor()
 }
 
 void Tension(void)
-{
+{    	MGPIO_VidSetPinValue(GPIOB, PISTON_UP, LOW);
+	MGPIO_VidSetPinValue(GPIOB, PISTON_DOWN, HIGH);
 	force = HAL_intGetForceVal();
 	while(force>0 && MGPIO_u8GetPinValue(GPIOA,TOGGLE))
 	{
-	MGPIO_VidSetPinValue(GPIOB, PISTON_UP, LOW);
-	MGPIO_VidSetPinValue(GPIOB, PISTON_DOWN, HIGH);
+
 	force = HAL_intGetForceVal();
 	DeltaLength = DELTA(0);
 	Stress  = force / Area;  //stress eqn
@@ -100,11 +100,14 @@ void Tension(void)
 	}
 	Gcount =0 ;
 	breakpoint = 1;
+	MGPIO_VidSetPinValue(GPIOB, PISTON_UP, LOW);
+	MGPIO_VidSetPinValue(GPIOB, PISTON_DOWN, LOW);
 
 }
 
 void Compression ()
-{
+{   MGPIO_VidSetPinValue(GPIOB, PISTON_UP, LOW);
+	MGPIO_VidSetPinValue(GPIOB, PISTON_DOWN, HIGH);
 	force = HAL_intGetForceVal();
 	while(force>0 && MGPIO_u8GetPinValue(GPIOA,TOGGLE))
 	{
@@ -124,6 +127,8 @@ void Compression ()
 	}
 	Gcount =0 ;
 	breakpoint = 1;
+	MGPIO_VidSetPinValue(GPIOB, PISTON_UP, LOW);
+	MGPIO_VidSetPinValue(GPIOB, PISTON_DOWN, LOW);
 }
 int main(int argc, char* argv[])
 {
