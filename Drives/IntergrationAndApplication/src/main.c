@@ -170,36 +170,7 @@ int main(int argc, char* argv[])
 
 	}
 
-	//	while (1)
-	//	{
-	//		long force;
-	//		  long deltaLength;
-	//		  if(digitalRead(start_machine)==HIGH&&breakpoint==0)//if the user press start the machine
-	//		  {
-	//		    adjustmotor();
-	//		    if(digitalRead(start_process)==HIGH)
-	//		    {
-	//		      if(digitalRead(toggle)==HIGH)//COMPERSSION
-	//		      {
-	//		        digitalWrite(piston_up,HIGH);//PISTON WIIL MOVE UP FOR COMPRESSION
-	//		        digitalWrite(piston_down,LOW);
-	//		        force =Force_sensor();
-	//		        deltaLength=Lsensor();
-	//		        CurveEqn(force, deltaLength);
-	//
-	//		      }
-	//		      else if(digitalRead(toggle)==LOW)//TENSION
-	//		      {
-	//		        digitalWrite(piston_up,LOW);//PISTON WIIL MOVE DOWN FOR TENSION
-	//		        digitalWrite(piston_down,HIGH);
-	//		        force=Force_sensor();
-	//		        deltaLength=Lsensor();
-	//		        CurveEqn(force, deltaLength);
-	//		      }
-	//		    }
-	//		  }
-	//		}
-	//	}
+
 
 }
 
