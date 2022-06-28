@@ -1,4 +1,8 @@
-
+/*
+     Auther: Embedded Team
+	 V2
+	 
+*/
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 
@@ -6,7 +10,8 @@
 #include "USART_private.h"
 #include "USART_config.h"
 
-
+void (*CallBack)(void);
+u8 USART_RecDate;
 void MUSART1_voidInit(void)
 {
 	/*	baud rate = 9600		*/
@@ -15,7 +20,8 @@ void MUSART1_voidInit(void)
 	SET_BIT((USART1-> CR[0]), 3);			/* Enabling Transmitter */
 	SET_BIT((USART1-> CR[0]), 2);			/* Enabling Receiver */
 	SET_BIT((USART1-> CR[0]), 13);			/* Enabling USART */
-	
+	SET_BIT( USART1 -> CR[0] , 5 );         /*Enable interrupt */
+	SET_BIT(NVIC_ISER1,5);                  /*NCIV*/
 	USART1 -> SR = 0;						/* Clearing status register */
 }
 
@@ -40,8 +46,20 @@ u8 MUSART1_u8Receive(void)
 }
 
 
+void MUSART1_voidSetcallBack(void (*setFunPtr)(void)){
 
+	CallBack = setFunPtr;
+}
+void USART1_IRQHandler(void)
+{
+	if(GET_BIT((USART1 -> SR), 5)){
 
+         CallBack();
+         USART_RecDate = USART1 -> DR;
+         CLR_BIT(USART1 -> SR, 5);
+	}
+
+}
 
 
 

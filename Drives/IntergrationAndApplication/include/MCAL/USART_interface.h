@@ -25,6 +25,8 @@ void MUSART1_voidTransmit(u8 *arr, u8 length);
 
 u8 MUSART1_u8Receive(void);
 
+void MUSART1_voidSetcallBack(void (*setFunPtr)(void));
+//void MUSART1_voidSetcallBack(u8 (*setFunPtr)(void));
 #endif
 
 
